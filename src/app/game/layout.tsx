@@ -6,7 +6,7 @@ export default function GameLayout({
     children: React.ReactNode
   }) {
     return (
-      <section className="flex p-4">
+      <section>
         <NavBar/>
         {children}
       </section>
