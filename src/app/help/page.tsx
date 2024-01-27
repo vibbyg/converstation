@@ -1,10 +1,10 @@
 import Link from "next/link";
+import { NavHeader } from "../common/component/navheader"
 
 export default function Home() {
     return (
       <div className="flex min-h-screen flex-col items-center p-24">
-        {/* <nav/> */}
-        <h1>how this works</h1>
+        <NavHeader path="/" text="how this works"/>
         <section>
           <h3>setup</h3>
           <p>lorem ipsum</p>
@@ -17,7 +17,6 @@ export default function Home() {
           <h3>version notes</h3>
           <p>lorem ipsum</p>
         </section>
-        <Link href="/">HOME PAGE</Link>
       </div>
     )
 }
