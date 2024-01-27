@@ -8,11 +8,11 @@ interface NavHeaderProps {
 
 export const NavHeader = (props: NavHeaderProps) => {
     return (
-        <div className="flex flex-row">
+        <div className="flex flex-row gap-5 items-center">
             <Link href={props.path}>
-                <FaArrowLeft className="text-2xl"/>
+                <FaArrowLeft className="text-4xl"/>
             </Link>
-            <h1 className="font-medium uppercase text-2xl">
+            <h1 className="font-medium uppercase text-4xl">
                 {props.text}
             </h1>
         </div>

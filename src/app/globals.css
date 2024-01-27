@@ -19,3 +19,7 @@ body {
   color: var(--colour);
   background: var(--bg);
 }
+
+.highlight {
+  color: var(--grey)
+}
