@@ -31,7 +31,7 @@ export default function Home() {
           <h1 className="font-medium text-7xl pt-10 tracking-wide">CONVERSTATION</h1>
           <h2 className="text-lg mb-7 mt-2 text-center">catalyze your conversations.</h2>
           <div className="flex flex-col items-center">
-            <HomeButton buttonText="BEGIN NEW CONVO" path="/game" />
+            <HomeButton buttonText="BEGIN NEW CONVO" path="/game/setup/one" />
             <HomeButton buttonText="HOW DOES THIS WORK?" path="/help" />
           </div>
         </div>
