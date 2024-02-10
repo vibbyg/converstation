@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card } from "./common/component/card";
+import { LandingCard } from "./common/component/card";
 import { FaRegSmile } from "react-icons/fa";
 
 interface IHomeButton {
@@ -26,7 +26,7 @@ export default function Home() {
         translate-y-24 -translate-x-80 bg-[var(--grey)]" />
       <div className="w-[35rem] h-[27rem] absolute rounded-3xl origin-top-left rotate-[9deg] 
         translate-y-8 translate-x-80 bg-[var(--grey)]" />
-      <Card>
+      <LandingCard>
         <div className="pr-20 pt-20 pl-20 pb-14">
           <h1 className="font-medium text-7xl pt-10 tracking-wide">CONVERSTATION</h1>
           <h2 className="text-lg mb-7 mt-2 text-center">catalyze your conversations.</h2>
@@ -35,7 +35,7 @@ export default function Home() {
             <HomeButton buttonText="HOW DOES THIS WORK?" path="/help" />
           </div>
         </div>
-      </Card>
+      </LandingCard>
         <h1 className="flex flex-row items-center gap-4 -mb-24 mt-16">
           <FaRegSmile />
           made by vibby + kun, buy us a coffee!
