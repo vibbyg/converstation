@@ -8,7 +8,7 @@
   --grey: #87898C;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     --colour: #F5F5F5; 
     --bg: #181C22;
