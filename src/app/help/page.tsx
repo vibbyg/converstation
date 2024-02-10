@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { NavHeader } from "../common/component/navheader"
+import { SubHeader } from "../common/component/textStyles"
 
 interface HelpSectionProps {
   header: string;
@@ -9,14 +10,6 @@ interface HelpSectionProps {
 interface VersionCardsProps {
   version: string;
   children: ReactNode;
-}
-
-const SubHeader: React.FC<{text: string}> = ({text}) => {
-  return (
-    <h1 className="font-medium uppercase text-2xl pb-2">
-      {text}
-    </h1>
-  )
 }
 
 const HelpSection: React.FC<HelpSectionProps> = ({header, children}) => {
@@ -39,7 +32,7 @@ const VersionCards: React.FC<VersionCardsProps> = ({version, children}) => {
 
 export default function Home() {
     return (
-      <div className="flex min-h-screen flex-col py-10 px-20 gap-5">
+      <div className="flex flex-col py-10 px-20 gap-5">
         <NavHeader path="/" text="how this works"/>
         <HelpSection header="set up">
           <p className="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit or sit amet, consectetur adipiscior sit amet, consectetur adipiscior sit amet, consectetur adipisci or sit amet, consectetur adipisci or sit amet, consectetur adipisci</p>
