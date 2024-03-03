@@ -5,6 +5,7 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { GameCard } from "../common/component/card";
 import Link from "next/link";
 import { count } from "console";
+import { useSearchParams } from "next/navigation";
 
 interface ICard {
   question: string;
@@ -42,9 +43,15 @@ const deckColorMap = new Map<string, string>([
 ]);
 
 export default function Game() {
+  const searchParams = useSearchParams();
+
+  // to access deck size and user selected decks, use these consts
+  const deckSize = Number(searchParams.get('deckSize'));
+  const deckNames = searchParams.getAll('deckNames');
+
   // const {cards, count} = gameDetails
   const cards = tempCardList
-  const count = tempCardList.length
+  const count = deckSize;
 
   const [num, setNum] = useState(0)
   const [curCard, setCurCard] = useState<ICard>({question: "ready to start?", deck: "default"})
