@@ -23,7 +23,7 @@ const HelpSection: React.FC<HelpSectionProps> = ({header, children}) => {
 
 const VersionCards: React.FC<VersionCardsProps> = ({version, children}) => {
   return (
-    <div className="border border-solid border-4 rounded-2xl p-5 w-80 h-40">
+    <div className="border-solid border-4 rounded-2xl p-5 w-80 h-40">
       <h3 className="text-l">{version}</h3>
       {children}
     </div>

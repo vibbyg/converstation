@@ -10,7 +10,7 @@ interface IHomeButton {
 const HomeButton: React.FC<IHomeButton> = ({ buttonText, path }) => {
   return (
     <Link href={path}>
-      <button className="p-3 mb-2 rounded-xl border-2 border-[var(--grey)] text-2xl tracking-wider">
+      <button className="p-3 mb-2 rounded-xl border-2 border-[var(--grey)] text-lg tracking-wider">
         {buttonText}
       </button>
     </Link>
@@ -28,18 +28,18 @@ export default function Home() {
         translate-y-8 translate-x-80 bg-[var(--grey)]" />
       <LandingCard>
         <div className="pr-20 pt-20 pl-20 pb-14">
-          <h1 className="font-medium text-7xl pt-10 tracking-wide">CONVERSTATION</h1>
-          <h2 className="text-lg mb-7 mt-2 text-center">catalyze your conversations.</h2>
+          <h1 className="font-medium text-7xl mb-12 pt-10 tracking-wide">CONVERSTATION</h1>
+          {/* <h2 className="text-lg mb-7 mt-2 text-center">catalyze your conversations.</h2> */}
           <div className="flex flex-col items-center">
             <HomeButton buttonText="BEGIN NEW CONVO" path="/game/setup/one" />
             <HomeButton buttonText="HOW DOES THIS WORK?" path="/help" />
           </div>
         </div>
       </LandingCard>
-        <h1 className="flex flex-row items-center gap-4 -mb-24 mt-16">
+        <h4 className="flex flex-row items-center gap-4 -mb-24 mt-16">
           <FaRegSmile />
-          made by vibby + kun, buy us a coffee!
-        </h1>
+          made by v +<a href="https://kunzhu.vercel.app/" target="_blank">k</a>
+        </h4>
     </main>
   )
 }
