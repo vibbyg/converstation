@@ -1,27 +1,98 @@
-'use client'
-import { useState } from "react";
+"use client";
 
 export interface IDeck {
-    deckName: string;
-    deckTagline: string;
-    deckColour: string;
-    deckPosition?: string | number;
-    deckID?: number;
-    onClick?: () => void;
+  deckName: string;
+  deckTagline?: string;
+  deckColour: string;
+  fontColour?: string;
+  deckPosition: number;
+  deckID?: number;
+  onCheck?: () => void;
 }
 
-export const Deck = ({ deckName, deckTagline, deckColour, deckPosition, onClick }: IDeck) => {
-    const [checked, setChecked] = useState(false);
+export const CDeck = ({
+  onCheck,
+  deckName,
+  deckTagline,
+  deckColour,
+  fontColour,
+  deckPosition,
+}: IDeck) => {
+  const xPosition = deckPosition * 3;
+  const yPosition = deckPosition;
 
-    return (
-        <div className="flex rounded-3xl border-4 w-96 h-64 -rotate-12 items-center justify-center flex-col gap-3 absolute" style={{ backgroundColor: deckColour, left: deckPosition, top: deckPosition }}>
-            <input type="checkbox" className="appearance-none w-4 h-4 border-2 rounded-full checked:border-[var(--grey)]" />
-            <h1 className="text-3xl text-[var(--bg)]">
-                {deckName.toUpperCase()}
-            </h1>
-            <h2 className="text-sm text-[var(--bg)]">
-                {deckTagline}
-            </h2>
-        </div>
-    )
-}
+  return (
+    <div
+      className="flex rounded-3xl border-2 w-96 h-64 -rotate-12 items-center justify-start flex-col absolute 
+      transition-all duration-500 hover:-translate-x-[25%]"
+      style={{ backgroundColor: deckColour, left: xPosition, top: yPosition }}
+    >
+      <input
+        onClick={onCheck}
+        type="checkbox"
+        className="absolute peer top-4 left-4 appearance-none cursor-pointer w-8 h-8 border-2 rounded-full bg-[var(--bg)]"
+      />
+      <svg
+        className="absolute top-4 left-5 w-6 h-6 mt-1 hidden peer-checked:block pointer-events-none"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="var(--grey)"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <h1
+        className="text-3xl mt-10 mb-1 font-bold"
+        style={{ color: fontColour ? fontColour : "var(--bg)" }}
+      >
+        {deckName.toUpperCase()}
+      </h1>
+      <h2 className="text-xs text-[var(--bg)]">{deckTagline}</h2>
+    </div>
+  );
+};
+
+export const RDeck = ({
+  onCheck,
+  deckName,
+  deckTagline,
+  deckColour,
+  fontColour,
+  deckPosition,
+}: IDeck) => {
+  const xPosition = deckPosition * 3;
+  const yPosition = deckPosition;
+
+  return (
+    <div
+      className="flex rounded-3xl border-2 w-96 h-64 -rotate-12 items-center justify-start flex-col absolute 
+      transition-all duration-500 hover:-translate-x-[25%]"
+      style={{ backgroundColor: deckColour, left: xPosition, top: yPosition }}
+    >
+      <input
+        onClick={onCheck}
+        name="option"
+        type="radio"
+        className="absolute peer top-4 left-4 appearance-none cursor-pointer w-8 h-8 border-2 rounded-full bg-[var(--bg)]"
+      />
+      <span className="transition-opacity opacity-0 absolute top-4 left-9 w-6 h-6 mt-2 pointer-events-none   -translate-x-2/4 peer-checked:opacity-100">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+        </svg>
+      </span>
+      <h1
+        className="text-3xl mt-10 mb-1 font-bold"
+        style={{ color: fontColour ? fontColour : "var(--bg)" }}
+      >
+        {deckName.toUpperCase()}
+      </h1>
+      <h2 className="text-xs text-[var(--bg)]">{deckTagline}</h2>
+    </div>
+  );
+};
