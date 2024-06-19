@@ -17,14 +17,14 @@ export const gameDecks: IDeck[] = [
   },
   {
     deckName: "Classic - Wild",
-    deckTagline: "for those heart to hearts with the homies",
+    deckTagline: "get to know each other on a deeper level",
     deckColour: "#FFA87D",
     deckPosition: 0,
     deckID: 3,
   },
   {
     deckName: "Classic - Mild",
-    deckTagline: "for those heart to hearts with the homies",
+    deckTagline: "chill questions to break the ice",
     deckColour: "#EE7485",
     deckPosition: 0,
     deckID: 4,

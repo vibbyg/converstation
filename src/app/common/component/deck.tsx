@@ -3,7 +3,7 @@
 export interface IDeck {
   deckName: string;
   deckTagline?: string;
-  deckColour: string;
+  deckColour?: string;
   fontColour?: string;
   deckPosition: number;
   deckID?: number;
@@ -18,13 +18,13 @@ export const CDeck = ({
   fontColour,
   deckPosition,
 }: IDeck) => {
-  const xPosition = deckPosition * 3;
+  const xPosition = deckPosition * 4;
   const yPosition = deckPosition;
 
   return (
     <div
       className="flex rounded-3xl border-2 w-96 h-64 -rotate-12 items-center justify-start flex-col absolute 
-      transition-all duration-500 hover:-translate-x-[25%]"
+      transition-all duration-500 hover:-translate-x-[25%] hover:-translate-y-[10%]"
       style={{ backgroundColor: deckColour, left: xPosition, top: yPosition }}
     >
       <input
@@ -58,7 +58,6 @@ export const RDeck = ({
   onCheck,
   deckName,
   deckTagline,
-  deckColour,
   fontColour,
   deckPosition,
 }: IDeck) => {
@@ -68,8 +67,8 @@ export const RDeck = ({
   return (
     <div
       className="flex rounded-3xl border-2 w-96 h-64 -rotate-12 items-center justify-start flex-col absolute 
-      transition-all duration-500 hover:-translate-x-[25%]"
-      style={{ backgroundColor: deckColour, left: xPosition, top: yPosition }}
+      transition-all duration-500 bg-[var(--bg)] hover:bg-[var(--grey)]"
+      style={{ left: xPosition, top: yPosition }}
     >
       <input
         onClick={onCheck}
@@ -77,7 +76,7 @@ export const RDeck = ({
         type="radio"
         className="absolute peer top-4 left-4 appearance-none cursor-pointer w-8 h-8 border-2 rounded-full bg-[var(--bg)]"
       />
-      <span className="transition-opacity opacity-0 absolute top-4 left-9 w-6 h-6 mt-2 pointer-events-none   -translate-x-2/4 peer-checked:opacity-100">
+      <span className="transition-opacity opacity-0 absolute top-4 left-9 w-6 h-6 mt-2 pointer-events-none -translate-x-2/4 peer-checked:opacity-100">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -92,7 +91,7 @@ export const RDeck = ({
       >
         {deckName.toUpperCase()}
       </h1>
-      <h2 className="text-xs text-[var(--bg)]">{deckTagline}</h2>
+      <h2 className="text-xs">{deckTagline}</h2>
     </div>
   );
 };

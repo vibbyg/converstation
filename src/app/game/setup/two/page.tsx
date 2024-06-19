@@ -18,7 +18,7 @@ export default function GameSetupTwo() {
       <SubHeader text="2. Choose deck size:" />
       <div className="flex flex-row justify-between">
         <Link href="/game/setup/one" className="flex mt-[20vh]">
-          <FaChevronLeft className="text-3xl" />
+          <FaChevronLeft className="text-3xl cursor-pointer" />
         </Link>
         <div className="flex-auto relative mx-40 h-full">
           {deckSizes.map((size, index) => {
@@ -49,7 +49,7 @@ export default function GameSetupTwo() {
             }}
             className="flex mt-[20vh] justify-end"
           >
-            <FaCheck className="text-3xl" />
+            <FaCheck className="text-3xl cursor-pointer" />
           </Link>
         )}
       </div>
