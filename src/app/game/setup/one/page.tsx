@@ -11,6 +11,11 @@ export default function GameSetupOne() {
   const [decksSelected, setDecksSelected] = useState<string[]>([]);
 
   const onDeckClick = (deckName: string) => {
+    decks.forEach((deck) => {
+      if(deck.deckName === deckName){
+        deck.deckSelected = !deck.deckSelected
+      }
+    })
     const containsDeck = decksSelected.filter((deck) => {
       console.log(
         `deck: ${deck}, deckName: ${deckName}, match?: ${deck === deckName}`
@@ -34,20 +39,15 @@ export default function GameSetupOne() {
         <div className="flex-auto relative mx-[15%] my-[5%] h-full">
           {decks.map((deck, index) => {
             return (
-              <div
-                key={index}
-                onClick={() => {
-                  onDeckClick(deck.deckName ?? "");
-                }}
-              >
                 <CDeck
+                  onCheck={onDeckClick}
                   key={index}
                   deckName={deck.deckName}
                   deckColour={deck.deckColour}
                   deckTagline={deck.deckTagline}
                   deckPosition={index * 30}
+                  deckSelected={deck.deckSelected}
                 />
-              </div>
             );
           })}
         </div>

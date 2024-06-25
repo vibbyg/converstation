@@ -6,8 +6,9 @@ export interface IDeck {
   deckColour?: string;
   fontColour?: string;
   deckPosition: number;
+  deckSelected?: boolean;
   deckID?: number;
-  onCheck?: () => void;
+  onCheck?: (deck: string) => void;
 }
 
 export const CDeck = ({
@@ -17,6 +18,7 @@ export const CDeck = ({
   deckColour,
   fontColour,
   deckPosition,
+  deckSelected
 }: IDeck) => {
   const xPosition = deckPosition * 4;
   const yPosition = deckPosition;
@@ -24,12 +26,14 @@ export const CDeck = ({
   return (
     <div
       className="flex rounded-3xl border-2 w-96 h-64 -rotate-12 items-center justify-start flex-col absolute 
-      transition-all duration-500 hover:-translate-x-[25%] hover:-translate-y-[10%]"
+      transition-all duration-500 hover:-translate-x-[25%] hover:-translate-y-[10%] hover:cursor-pointer"
+      onClick={() => onCheck ? onCheck(deckName) : {}}
       style={{ backgroundColor: deckColour, left: xPosition, top: yPosition }}
     >
       <input
-        onClick={onCheck}
         type="checkbox"
+        checked={deckSelected}
+        readOnly
         className="absolute peer top-4 left-4 appearance-none cursor-pointer w-8 h-8 border-2 rounded-full bg-[var(--bg)]"
       />
       <svg
@@ -37,9 +41,9 @@ export const CDeck = ({
         viewBox="0 0 24 24"
         fill="none"
         stroke="var(--grey)"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
@@ -60,6 +64,7 @@ export const RDeck = ({
   deckTagline,
   fontColour,
   deckPosition,
+  deckSelected
 }: IDeck) => {
   const xPosition = deckPosition * 3;
   const yPosition = deckPosition;
@@ -67,11 +72,13 @@ export const RDeck = ({
   return (
     <div
       className="flex rounded-3xl border-2 w-96 h-64 -rotate-12 items-center justify-start flex-col absolute 
-      transition-all duration-500 bg-[var(--bg)] hover:bg-[var(--grey)]"
+      transition-all duration-500 bg-[var(--bg)] hover:bg-[var(--grey)] hover:cursor-pointer"
       style={{ left: xPosition, top: yPosition }}
+      onClick={() => onCheck ? onCheck(deckName) : {}}
     >
       <input
-        onClick={onCheck}
+        readOnly
+        checked={deckSelected}
         name="option"
         type="radio"
         className="absolute peer top-4 left-4 appearance-none cursor-pointer w-8 h-8 border-2 rounded-full bg-[var(--bg)]"

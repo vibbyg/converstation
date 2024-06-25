@@ -6,6 +6,7 @@ export const gameDecks: IDeck[] = [
     deckTagline: "for those heart to hearts with the homies",
     deckColour: "#A5E1C8",
     deckPosition: 0,
+    deckSelected: false,
     deckID: 1,
   },
   {
@@ -13,6 +14,7 @@ export const gameDecks: IDeck[] = [
     deckTagline: "for those heart to hearts with the homies",
     deckColour: "#FFD8C4",
     deckPosition: 0,
+    deckSelected: false,
     deckID: 2,
   },
   {
@@ -20,6 +22,7 @@ export const gameDecks: IDeck[] = [
     deckTagline: "get to know each other on a deeper level",
     deckColour: "#FFA87D",
     deckPosition: 0,
+    deckSelected: false,
     deckID: 3,
   },
   {
@@ -27,6 +30,7 @@ export const gameDecks: IDeck[] = [
     deckTagline: "chill questions to break the ice",
     deckColour: "#EE7485",
     deckPosition: 0,
+    deckSelected: false,
     deckID: 4,
   },
   {
@@ -34,6 +38,7 @@ export const gameDecks: IDeck[] = [
     deckTagline: "for those heart to hearts with the homies",
     deckColour: "#8FB2F6",
     deckPosition: 0,
+    deckSelected: false,
     deckID: 5,
   },
 ];

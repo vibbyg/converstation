@@ -33,6 +33,7 @@ export default function GameSetupTwo() {
                   deckColour="var(--bg)"
                   fontColour="var(--colour)"
                   deckPosition={index * 100}
+                  deckSelected={parseInt(size) == deckSize}
                 />
               </div>
             );
