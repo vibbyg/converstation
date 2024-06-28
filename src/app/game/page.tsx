@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { GameCard } from "../common/component/card";
-import { questionsData } from "../data/questionsData";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { filterQuestions } from "@/services/questionServices";
 
 const Counter: React.FC<{ cur: number; total: number }> = ({ cur, total }) => {
   return (
@@ -16,47 +16,67 @@ const Counter: React.FC<{ cur: number; total: number }> = ({ cur, total }) => {
 };
 
 interface ICard {
-  deck: number;
   question: string;
+  decks: {
+    colour: string;
+  }
 }
 
-const deckColorMap = new Map<number, string>([
-  [0, "#FFF"],
-  [1, "#EE7485"], // mild
-  [2, "#FFA87D"], // wild
-  [3, "#FFD8C4"], // couples
-  [4, "#8FB2F6"], // homies
-  [5, "#A5E1C8"], // self
-]);
-
-const generateCards = (deckSize: number, deckNames: string[]) => {
+const generateCards = (questions: ICard[], deckSize: number) => {
   // TODO: right now the cards are just being generated based on randomized index;
   //       deckNames not actually taken into consideration
-  console.log(deckNames);
-  let maxSize = questionsData.length;
+  let maxSize = questions.length;
+  console.log('maxSize: ', maxSize);
   let cardsIdx: number[] = [];
   while (cardsIdx.length < deckSize) {
     let idx = Math.ceil(Math.random() * maxSize);
     if (cardsIdx.indexOf(idx) === -1) cardsIdx.push(idx);
+    console.log('cardsIdx: ', cardsIdx.length)
   }
-  let cards = cardsIdx.map((idx) => questionsData[idx]);
+  let cards = cardsIdx.map((idx) => questions[idx]);
   return cards;
 };
 
 export default function Game() {
+  console.log('start game');
+  const [questions, setQuestions] = useState<ICard[]>([]);
   const searchParams = useSearchParams();
 
   // to access deck size and user selected decks, use these consts
   const deckSize = Number(searchParams.get("deckSize"));
-  const deckNames = searchParams.getAll("deckNames");
+  console.log('questions: ', questions);
 
-  const cards = generateCards(deckSize, deckNames);
   const count = deckSize;
+
+  console.log('does this work?');
+  useEffect(() => {
+    console.log('this is now running');
+    fetchQuestionsAndRandomize();
+    console.log('this is now finished');
+  }, []);
+
+  const fetchQuestionsAndRandomize = async () => {
+    console.log('fetchQuestions starting');
+    try {
+      console.log('fetchQuestion script running');
+      const questionData = await filterQuestions(searchParams.getAll("deckNames"));
+      const randomQuestionData = generateCards(questionData || [], deckSize)
+      setQuestions(randomQuestionData);
+      console.log('check if this runs every time: ', JSON.stringify(questionData));
+    }
+    catch (error: any) {
+      console.log('Fetched error: ', error.message)
+    }
+  }
+
+  console.log('what');
 
   const [num, setNum] = useState(0);
   const [curCard, setCurCard] = useState<ICard>({
-    deck: 0,
     question: "ready to start?",
+    decks: {
+      colour: "#FFF"
+    }
   });
 
   const [prevCard, setPrevCard] = useState<ICard | null>(null);
@@ -66,22 +86,17 @@ export default function Game() {
   let idx = num;
   const nextCard = () => {
     if (idx < count) {
-      // TODO: again, right now the deck # is merely a placeholder
-      let card: ICard = {
-        deck: (idx % 4) + 1,
-        question: cards[idx].question,
-      };
-      setPrevCard(curCard);
+      setPrevCard(questions[idx - 1]);
       // prevCards.push(curCard);
-      setCurCard(card);
+      setCurCard(questions[idx]);
       idx += 1;
       setNum(idx);
     }
   };
 
   const previousCard = () => {
-    if (prevCard) {
-      setCurCard(prevCard);
+    if (idx > 0 && prevCard) {
+      setCurCard(prevCard); 
       idx -= 1;
       setNum(idx);
     }
@@ -90,7 +105,7 @@ export default function Game() {
   return (
     <div className="flex flex-col p-24 items-center">
       <Counter cur={num} total={count} />
-      <GameCard color={deckColorMap.get(curCard.deck)}>
+      <GameCard color={curCard.decks.colour}>
         <div
           className="flex h-full w-full items-center p-10 justify-center"
           onClick={nextCard}

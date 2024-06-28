@@ -7,6 +7,7 @@ interface NavHeaderProps {
 }
 
 export const NavHeader = (props: NavHeaderProps) => {
+    
     return (
         <div className="flex flex-row gap-5 items-center">
             <Link href={props.path}>

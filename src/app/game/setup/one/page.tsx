@@ -3,11 +3,37 @@ import { SubHeader } from "@/app/common/component/textStyles";
 import { FaChevronRight, FaRegSmile } from "react-icons/fa";
 import Link from "next/link";
 import { IDeck, CDeck } from "@/app/common/component/deck";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { gameDecks } from "../../../data/gameData";
+import { getDecks } from "@/services/deckServices";
 
 export default function GameSetupOne() {
-  const decks: IDeck[] = gameDecks;
+  const [decks, setDecks] = useState<IDeck[]>([]);
+
+  useEffect(() => {
+    fetchDecks();
+  }, []);
+
+  const fetchDecks = async () => {
+    try {
+      console.log('testing');
+      const deckData = await getDecks();
+      const wrappedDeckData = deckData?.map((deck, index) => {
+        return {
+          deckName: deck.name,
+          deckTagline: deck.tagline,
+          deckColour: deck.colour,
+          deckID: index,
+          deckPosition: index,
+          deckSelected: false
+        }
+      }) as IDeck[];
+      setDecks(wrappedDeckData || gameDecks);
+    }
+    catch (error: any) {
+      console.log('Fetched error: ', error.message)
+    }
+  }
   const [decksSelected, setDecksSelected] = useState<string[]>([]);
 
   const onDeckClick = (deckName: string) => {
