@@ -21,7 +21,8 @@ const HomeButton: React.FC<IHomeButton> = ({ buttonText, path }) => {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center relative">
+    <main>
+    <div className="flex min-h-screen flex-col items-center justify-center relative portrait:hidden position: fixed">
       <div className="w-[45rem] h-[27rem] absolute rounded-3xl origin-top-left -rotate-[21deg] 
         translate-y-24 -translate-x-80 bg-[var(--grey)]" />
       <div className="w-[35rem] h-[27rem] absolute rounded-3xl origin-top-left rotate-[9deg] 
@@ -38,8 +39,12 @@ export default function Home() {
       </LandingCard>
         <h4 className="flex flex-row items-center gap-4 -mb-24 mt-16">
           <FaRegSmile />
-          made by v +<a href="https://kunzhu.vercel.app/" target="_blank">k</a>
+          made by <a href="https://instagram.com/vibbyridge">v</a> +<a href="https://kunzhu.vercel.app/" target="_blank">k</a>
         </h4>
+    </div>
+    <div className="landscape:hidden">
+      This experience is meant to be viewed in landscape mode. Please rotate device to continue to this game.
+    </div>
     </main>
   )
 }

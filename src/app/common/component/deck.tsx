@@ -26,7 +26,7 @@ export const CDeck = ({
   return (
     <div
       className="flex rounded-3xl border-2 w-96 h-64 -rotate-12 items-center justify-start flex-col absolute 
-      transition-all duration-500 hover:-translate-x-[25%] hover:-translate-y-[10%] hover:cursor-pointer"
+      transition-all duration-500 hover:-translate-x-[25%] hover:-translate-y-[10%] hover:cursor-pointer hover:shadow-xl"
       onClick={() => onCheck ? onCheck(deckName) : {}}
       style={{ backgroundColor: deckColour, left: xPosition, top: yPosition }}
     >

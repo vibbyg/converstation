@@ -16,7 +16,6 @@ export default function GameSetupOne() {
 
   const fetchDecks = async () => {
     try {
-      console.log('testing');
       const deckData = await getDecks();
       const wrappedDeckData = deckData?.map((deck, index) => {
         return {
@@ -43,16 +42,11 @@ export default function GameSetupOne() {
       }
     })
     const containsDeck = decksSelected.filter((deck) => {
-      console.log(
-        `deck: ${deck}, deckName: ${deckName}, match?: ${deck === deckName}`
-      );
       return deck === deckName;
     });
-    console.log(`containsDeck: ${JSON.stringify(containsDeck)}`);
     containsDeck.length == 0
       ? setDecksSelected([...decksSelected, deckName])
       : setDecksSelected(decksSelected.filter((deck) => deck !== deckName));
-    console.log(`decksSelected: ${JSON.stringify(decksSelected)}`);
   };
 
   return (
