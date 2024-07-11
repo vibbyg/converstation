@@ -16,6 +16,10 @@ const config: Config = {
       fontFamily: {
         'mono': ['Roboto_Mono']
 
+      },
+      screens: {
+        'xl': '640px',
+        '3xl': '1920px'
       }
     },
     colors: {
