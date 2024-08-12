@@ -12,7 +12,7 @@ interface IHomeButton {
 const HomeButton: React.FC<IHomeButton> = ({ buttonText, path }) => {
   return (
     <Link href={path}>
-      <button className="p-3 mb-2 rounded-xl border-2 border-[var(--grey)] sm:text-2xl lg:text-lg tracking-wider">
+      <button className="mb-2 p-3 rounded-xl border-2 border-[var(--grey)] sm:text-2xl lg:text-lg tracking-wider landscape:max-lg:text-base landscape:max-lg:p-2">
         {buttonText}
       </button>
     </Link>
@@ -32,15 +32,15 @@ export default function Home() {
         translate-y-8 translate-x-80 bg-[var(--grey)] max-lg:hidden"
         />
         <LandingCard>
-          <div className="px-20 pt-20 pb-14">
-            <h1 className="font-medium text-7xl mb-12 pt-10 tracking-wide">
+          <div className="px-20 pt-20 pb-14 landscape:max-lg:py-10 landscape:max-lg:px-15">
+            <h1 className="font-medium text-7xl landscape:max-lg:text-5xl mb-12 pt-10 tracking-wide">
               CONVERSTATION
             </h1>
             {/* <h2 className="text-lg mb-7 mt-2 text-center">catalyze your conversations.</h2> */}
             <div className="flex flex-col items-center">
               <HomeButton buttonText="BEGIN NEW CONVO" path="/game/setup/one" />
               <HomeButton buttonText="HOW DOES THIS WORK?" path="/help" />
-              <h4 className="flex flex-row gap-4 items-center lg:hidden">
+              <h4 className="flex flex-row gap-4 items-center lg:hidden max-lg:text-xs">
                 <FaRegSmile />
                 made by <a href="https://instagram.com/vibbyridge">v</a> +
                 <a href="https://kunzhu.vercel.app/" target="_blank">
