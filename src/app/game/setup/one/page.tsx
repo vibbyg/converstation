@@ -9,9 +9,11 @@ import { getDecks } from "@/services/deckServices";
 
 export default function GameSetupOne() {
   const [decks, setDecks] = useState<IDeck[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetchDecks();
+    setLoading(false);
   }, []);
 
   const fetchDecks = async () => {
@@ -56,6 +58,11 @@ export default function GameSetupOne() {
         <div className="flex mt-20 highlight">
           <FaRegSmile className="lg:text-3xl md:text-2xl" />
         </div>
+        {loading ? 
+        <div className="flex-auto p-24">
+          gathering decks...
+        </div>
+        :
         <div className="flex-auto relative md:mx-[10%] md:my-[3%] lg:mx-[15%] lg:my-[5%] h-full">
           {decks.map((deck, index) => {
             return (
@@ -71,6 +78,7 @@ export default function GameSetupOne() {
             );
           })}
         </div>
+        }
         {decksSelected.length > 0 && (
           <Link
             href={{

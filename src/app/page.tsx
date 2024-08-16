@@ -42,7 +42,7 @@ export default function Home() {
               <HomeButton buttonText="HOW DOES THIS WORK?" path="/help" />
               <h4 className="flex flex-row gap-4 items-center lg:hidden max-lg:text-xs">
                 <FaRegSmile />
-                made by <a href="https://instagram.com/vibbyridge">v</a> +
+                made by <a href="https://vibby.vercel.app/" target="_blank">v</a> +
                 <a href="https://kunzhu.vercel.app/" target="_blank">
                   k
                 </a>
@@ -52,7 +52,7 @@ export default function Home() {
         </LandingCard>
         <h4 className="flex flex-row items-center gap-4 -mb-24 mt-16 max-lg:hidden">
           <FaRegSmile />
-          made by <a href="https://instagram.com/vibbyridge">v</a> +
+          made by <a href="https://vibby.vercel.app/" target="_blank">v</a> +
           <a href="https://kunzhu.vercel.app/" target="_blank">
             k
           </a>
