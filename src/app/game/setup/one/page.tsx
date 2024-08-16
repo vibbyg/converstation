@@ -52,11 +52,11 @@ export default function GameSetupOne() {
   return (
     <div>
       <SubHeader text="1. Create your deck:" />
-      <div className="flex flex-row justify-between">
-        <div className="flex mt-[20vh] highlight">
-          <FaRegSmile className="text-3xl" />
+      <div className="flex flex-row justify-between self-center">
+        <div className="flex mt-20 highlight">
+          <FaRegSmile className="lg:text-3xl md:text-2xl" />
         </div>
-        <div className="flex-auto relative mx-[15%] my-[5%] h-full">
+        <div className="flex-auto relative md:mx-[10%] md:my-[3%] lg:mx-[15%] lg:my-[5%] h-full">
           {decks.map((deck, index) => {
             return (
                 <CDeck
@@ -79,9 +79,9 @@ export default function GameSetupOne() {
                 deckNames: decksSelected,
               },
             }}
-            className="flex mt-[20vh]"
+            className="flex mt-20"
           >
-            <FaChevronRight className="text-3xl" />
+            <FaChevronRight className="text-3xl z-0" />
           </Link>
         )}
       </div>

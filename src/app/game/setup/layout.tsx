@@ -7,7 +7,7 @@ export default function GameSetupLayout({
     children: React.ReactNode
   }) {
     return (
-      <div className="flex flex-col py-3 px-20 gap-5">
+      <div className="flex flex-col py-3 px-20 gap-5 h-fit justify-start">
         <NavHeader path="/" text="New conversation"/>
         {children}
       </div>

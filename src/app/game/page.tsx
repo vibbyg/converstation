@@ -45,6 +45,7 @@ const generateCards = (questions: ICard[], deckSize: number) => {
 
 export default function Game() {
   const [questions, setQuestions] = useState<ICard[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
 
   // to access deck size and user selected decks, use these consts
@@ -93,6 +94,8 @@ export default function Game() {
   };
 
   return (
+    loading ? <div>loading...</div>
+    :
     <div className="flex flex-col p-24 items-center">
       <Counter cur={num} total={count} />
       <GameCard color={curCard.decks.colour}>

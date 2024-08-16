@@ -25,7 +25,7 @@ export const CDeck = ({
 
   return (
     <div
-      className="flex rounded-3xl border-2 w-96 h-64 -rotate-12 items-center justify-start flex-col absolute 
+      className="flex md:rounded-2xl lg:rounded-3xl border-2 md:w-72 md:h-48 lg:w-96 lg:h-64 pl-2 pr-2 -rotate-12 items-center justify-start flex-col absolute 
       transition-all duration-500 hover:-translate-x-[25%] hover:-translate-y-[10%] hover:cursor-pointer hover:shadow-xl"
       onClick={() => onCheck ? onCheck(deckName) : {}}
       style={{ backgroundColor: deckColour, left: xPosition, top: yPosition }}
@@ -48,12 +48,12 @@ export const CDeck = ({
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
       <h1
-        className="text-3xl mt-10 mb-1 font-bold"
+        className="lg:text-3xl md:text-xl md:mt-5 lg:mt-10 mb-1 font-bold"
         style={{ color: fontColour ? fontColour : "var(--bg)" }}
       >
         {deckName.toUpperCase()}
       </h1>
-      <h2 className="text-xs text-[var(--bg)]">{deckTagline}</h2>
+      <h2 className="md:text-xs lg:text-md text-[var(--bg)]">{deckTagline}</h2>
     </div>
   );
 };

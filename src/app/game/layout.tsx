@@ -8,7 +8,7 @@ export default function GameLayout({
     children: React.ReactNode
   }) {
     return (
-      <section className="h-screen">
+      <section className="h-[calc(100dvh)] w-[calc(100dvw)]">
         <NavBar/>
         {children}
         <Link href="/help" className="absolute bottom-5 right-10 text-xl">
