@@ -82,7 +82,7 @@ export default function Home() {
             href="https://www.werenotreallystrangers.com/"
             target="_blank"
           >
-            We're Not Really Strangers
+            We&#39;re Not Really Strangers
           </a>{" "}
           card game.
         </p>
